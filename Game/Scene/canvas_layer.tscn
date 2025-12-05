@@ -1,0 +1,134 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdup7ix7e4gvu"]
+
+[ext_resource type="Script" uid="uid://blwo0maiitcw8" path="res://Game/Script/UI_Manager.gd" id="1_ee168"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ue4uq"]
+bg_color = Color(0, 0, 0, 0.588235)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.784314, 0.317647, 0.407843, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3d33"]
+bg_color = Color(0.784314, 0.317647, 0.407843, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_8u1vp"]
+font_size = 80
+font_color = Color(1, 0.792157, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qwtiw"]
+font_size = 80
+font_color = Color(0.823529, 0.67451, 0.0862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyupf"]
+bg_color = Color(0.25098, 0.866667, 0.764706, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bo6st"]
+bg_color = Color(0.180392, 0.662745, 0.584314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ossii"]
+bg_color = Color(0.823529, 0.67451, 0.0862745, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 110
+script = ExtResource("1_ee168")
+
+[node name="GameScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="GameScreen"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 450.0
+offset_bottom = 90.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ue4uq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_j3d33")
+value = 100.0
+show_percentage = false
+
+[node name="CoinLabel" type="Label" parent="GameScreen"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_bottom = 110.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_8u1vp")
+
+[node name="GameOverScreen" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 0.784314)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -55.0
+offset_right = 230.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_qwtiw")
+
+[node name="RestartButton" type="Button" parent="GameOverScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = 60.0
+offset_right = 151.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_wyupf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bo6st")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ossii")
+text = "RESTART"
+
+[connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://5il6l5i5eui3"]
+
+[ext_resource type="Script" uid="uid://d1q5380xc84eg" path="res://Game/Script/VFX_Controller.gd" id="1_wyrxn"]
+[ext_resource type="Texture2D" uid="uid://sqp6q5hwlft3" path="res://Asset/VFX/VFX_PlayerFire.png" id="2_58max"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_056g1"]
+atlas = ExtResource("2_58max")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnmem"]
+atlas = ExtResource("2_58max")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q68e"]
+atlas = ExtResource("2_58max")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_08ofx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_056g1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnmem")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q68e")
+}],
+"loop": false,
+"name": &"Start",
+"speed": 20.0
+}]
+
+[node name="VFX_Player_Fire" type="Node2D"]
+script = ExtResource("1_wyrxn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 2.08165e-12)
+sprite_frames = SubResource("SpriteFrames_08ofx")
+animation = &"Start"
+frame_progress = 1.0
